@@ -11,10 +11,12 @@ int main()
 		DLList<char> *L1 = new DLList<char>();
 		//BSTree<LLNode<char>> *T1 = new BSTree<LLNode<char>>();
 
-		for(int i = 0; i < 10; i++)
 		L1->insert('b');
+		for(int i = 0 ; i < 4; i++)
 		L1->insert('x');
+		for (int i = 0; i < 2; i++)
 		L1->insert('f');
+		for (int i = 0; i < 10; i++)
 		L1->insert('d');
 
 		//L1->remove('d');

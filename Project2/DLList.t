@@ -157,10 +157,21 @@ void DLList<BaseType>::swap(LLNode<BaseType> *lhs, LLNode<BaseType> *rhs)
 template <class BaseType>
 void DLList<BaseType>::quicksort()
 {
-	LLNode<BaseType> *one = root->next;
-	LLNode<BaseType> *two = one->next->next;
-	swap(one,two);
+	LLNode<BaseType> *last = root;
+
+	while (last->next)
+	{
+		last = last->next;
+	}
+
+	quicksortAux(root,last);
+
 }
 
+
+// Quicksort Auxiliary function
+template <class BaseType>
+void DLList<BaseType>::quicksortAux(LLNode<BaseType> *left, LLNode<BaseType> *right)
+{}
 
 // Populate Tree with nodes by frequency(highest at the top)

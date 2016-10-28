@@ -51,6 +51,7 @@ private:
 	LLNode<BaseType> *root;
 	int size;
 	void swap(LLNode<BaseType> *lhs, LLNode<BaseType> *rhs); // Make private once completed
+	void quicksortAux(LLNode<BaseType> *left,LLNode<BaseType> *right);
 public:
 	DLList();
 	virtual ~DLList();
