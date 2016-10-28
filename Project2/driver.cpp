@@ -13,8 +13,13 @@ int main()
 		L1->insert('b');
 		L1->insert('x');
 		L1->insert('f');
-		L1->insert('b');
 		L1->insert('d');
+
+		//L1->remove('d');
+		//L1->remove('b');
+		//L1->remove('f');
+		//L1->remove('x');
+
 		L1->print();
 
 		/*
