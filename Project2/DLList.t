@@ -8,6 +8,7 @@
 *******************************************************/
 
 #include <iostream>
+#include "BSTree.h"
 
 using namespace std;
 
@@ -39,6 +40,7 @@ bool DLList<BaseType>::insert(const BaseType &val)
 		if (iterator->val == val)
 		{
 			(iterator->frequency)++;
+			(this->size)++;
 			return true;
 		}
 	}
@@ -48,6 +50,7 @@ bool DLList<BaseType>::insert(const BaseType &val)
 		//LLNode<BaseType> *temp = 
 		iterator->next = new LLNode<BaseType>(val, 1);
 		(iterator->next)->prev = iterator;
+		(this->size)++;
 		return true;
 	}
 	catch (exception const &ex)
@@ -100,6 +103,7 @@ bool DLList<BaseType>::remove(const BaseType &val)
 				delete iterator;
 
 			}
+			(this->size)--;
 			return true;
 		}
 		iterator = iterator->next;
@@ -121,4 +125,42 @@ void DLList<BaseType>::print()
 		cout << " | " << iterator->val << ": " << iterator->frequency << " | " ;
 	}
 
+	cout << "\nSize: " << this->size << endl;
+
 }
+
+
+// Swap nodes in list order, not very dynamic programming in this one...
+template <class BaseType>
+void DLList<BaseType>::swap(LLNode<BaseType> *lhs, LLNode<BaseType> *rhs)
+{
+	/* 
+	    Come back and make this a swap with pointers, but account for the prev and next pointers of 
+	    not affected adjacent nodes. OR overload class operator. This will work, but only in scope:
+
+		LLNode<BaseType> *p;
+		p = lhs;
+		lhs = rhs;
+		rhs = p;
+    */
+
+	LLNode<BaseType> p;
+	p = *lhs;
+	lhs->val = rhs->val;
+	lhs->frequency = rhs->frequency;
+	rhs->val = p.val;
+	rhs->frequency = p.frequency;
+}
+
+
+// Sort by frequency in descending order for huffman coding algorithm
+template <class BaseType>
+void DLList<BaseType>::quicksort()
+{
+	LLNode<BaseType> *one = root->next;
+	LLNode<BaseType> *two = one->next->next;
+	swap(one,two);
+}
+
+
+// Populate Tree with nodes by frequency(highest at the top)

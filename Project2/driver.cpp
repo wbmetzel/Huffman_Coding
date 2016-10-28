@@ -9,7 +9,9 @@ int main()
 	try {
 
 		DLList<char> *L1 = new DLList<char>();
+		//BSTree<LLNode<char>> *T1 = new BSTree<LLNode<char>>();
 
+		for(int i = 0; i < 10; i++)
 		L1->insert('b');
 		L1->insert('x');
 		L1->insert('f');
@@ -22,8 +24,11 @@ int main()
 
 		L1->print();
 
+		L1->quicksort();
+
+		L1->print();
 		/*
-		BSTree<int> *t1 = new BSTree<int>();
+		
 
 		t1->add(11);
 
